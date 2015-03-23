@@ -8,9 +8,9 @@ var Vixin = require('../index');
  * @usage
  *
  * // https://github.com/hapijs/joi
- * var rules = { .. }
+ * var rules = { ...Joi Schema... }
  * React.createClass({
- *   mixins: [Vixin(rules)]
+ *   mixins: [VixinJoi(rules)]
  * });
  *
  * @param {Object} rules Rules to be provided to the mixin
