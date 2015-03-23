@@ -35,21 +35,21 @@ describe('Validation Mixin', function() {
     });
   });
 
-  // ------------------
-  // ------------------
-  // ------------------
+  it('should call the provided `handler` argument', function() {
+    var dummy = jest.genMockFunction();
+    var mixin = Vixin({}, dummy);
 
-  describe('touches', function() {
-    it('should add field to list');
-    it('should add field to touch fields for only once');
+    expect(dummy.mock.calls.length).toBe(0);
+    mixin.handleValidation();
+    expect(dummy.mock.calls.length).toBe(1);
   });
 
-  // ------------------
-  // ------------------
-  // ------------------
-  
-  describe('validation', function() {
-    it('should not validate fields unless `touched`');
-    it('should validate all fields whether `touched` or not');
+  it('should call the provided `handler` argument with the mixin/components context (`this`)', function() {
+    var ctx;
+    var dummy = jest.genMockFunction().mockImpl(function() { ctx = this; });
+    var mixin = Vixin({}, dummy);
+
+    mixin.handleValidation();
+    expect(context).toBe(mixin);
   });
 });

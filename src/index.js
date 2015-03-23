@@ -37,7 +37,7 @@ module.exports = function(rules, handler) {
      * @return {boolean}
      */
     isTouched: function(field) {
-      return this.state.touched.indexOf(field) == -1
+      return this.state.touched.indexOf(field) == -1;
     }
   }
 };
