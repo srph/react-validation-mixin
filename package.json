@@ -1,0 +1,39 @@
+{
+  "name": "react-vixin",
+  "version": "0.1.0",
+  "description": "Bootstraps your form component with low-level validation feat",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srph/react-vixin.git"
+  },
+  "keywords": [
+    "validation",
+    "mixin",
+    "reactjs",
+    "awesome",
+    "pogi"
+  ],
+  "author": "srph <seraphipod@gmail.com> (https://srph.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/srph/react-vixin/issues"
+  },
+  "homepage": "https://github.com/srph/react-vixin",
+  "devDependencies": {
+    "jest": "^0.1.39",
+    "react-tools": "^0.13.1"
+  },
+  "dependencies": {
+    "react": "^0.13.1"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  }
+}
