@@ -8,16 +8,16 @@ var Vixin = require('../index');
  * @usage
  *
  * // https://github.com/hapijs/joi
- * var rules = { .. }
+ * var rules = { ...Joi Schema... }
  * React.createClass({
- *   mixins: [Vixin(rules)]
+ *   mixins: [VixinJoi(rules)]
  * });
  *
  * @param {Object} rules Rules to be provided to the mixin
  * @return {Object} Our mixin with Joi as validator
  */
 module.exports = function(rules) {
-  return mixin(rules, function(data) {
+  return Vixin(rules, function(data) {
     Joi.validate(data, rules, function(err, value) {
       // Joi states that when err is null,
       // then the object is valid.
