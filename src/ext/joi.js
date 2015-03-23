@@ -17,7 +17,7 @@ var Vixin = require('../index');
  * @return {Object} Our mixin with Joi as validator
  */
 module.exports = function(rules) {
-  return mixin(rules, function(data) {
+  return Vixin(rules, function(data) {
     Joi.validate(data, rules, function(err, value) {
       // Joi states that when err is null,
       // then the object is valid.
