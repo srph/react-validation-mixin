@@ -50,6 +50,6 @@ describe('Validation Mixin', function() {
     var mixin = Vixin({}, dummy);
 
     mixin.handleValidation();
-    expect(context).toBe(mixin);
+    expect(ctx).toBe(mixin);
   });
 });
