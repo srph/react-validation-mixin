@@ -23,6 +23,10 @@
     "url": "https://github.com/srph/react-vixin/issues"
   },
   "homepage": "https://github.com/srph/react-vixin",
+  "dependencies": {
+    "react": "^0.12",
+    "joi": "^6.0.8"
+  },
   "devDependencies": {
     "jest": "^0.1.39",
     "jest-cli": "^0.3.0",
