@@ -28,8 +28,9 @@
     "jest-cli": "^0.3.0",
     "react-tools": "^0.13.1"
   },
-  "dependencies": {
-    "react": "^0.13.1"
+  "peerDependencies": {
+    "react": "^0.12",
+    "joi": "^6.0.8"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/preprocessor",
