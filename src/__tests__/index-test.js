@@ -1,55 +1,58 @@
 var src = '../index.js';
 jest.dontMock(src);
+var handler = jest.genMockFunction();
+var unit = require('../utils/index');
 
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 var Vixin = require(src);
 
 describe('Validation Mixin', function() {
+  beforeEach(function() {
+    unit.isObject.mockReturnValue(true);
+  });
+
   describe('exceptions for passed `rule` argument', function() {
     // Utility to test `Vixin` from throwing
     var toThrow = function(rule) {
       expect(function() { Vixin(rule) }).toThrow();
     }
 
-    it('should throw when an array', function() {
+    it('should throw when not `unit.isObject` returns false', function() {
+      unit.isObject.mockReturnValue(false);
       toThrow([]);
-    });
-
-    it('should throw when a number', function() {
       toThrow(1);
       toThrow(2.5);
       toThrow(-2.5);
-    });
-
-    it('should throw when a string', function() {
       toThrow('');
-    });
-
-    it('should throw when undefined', function() {
       toThrow();
     });
 
-    it('should not throw when an object', function() {
+    it('should not throw when `unit.isObject` returns true', function() {
       expect(function() { Vixin({}) }).not.toThrow();
     });
   });
 
   it('should call the provided `handler` argument', function() {
-    var dummy = jest.genMockFunction();
-    var mixin = Vixin({}, dummy);
+    var mixin = Vixin({}, handler);
 
-    expect(dummy.mock.calls.length).toBe(0);
+    expect(handler.mock.calls.length).toBe(0);
     mixin.handleValidation();
-    expect(dummy.mock.calls.length).toBe(1);
+    expect(handler.mock.calls.length).toBe(1);
   });
 
   it('should call the provided `handler` argument with the mixin/components context (`this`)', function() {
     var ctx;
-    var dummy = jest.genMockFunction().mockImpl(function() { ctx = this; });
-    var mixin = Vixin({}, dummy);
+    handler.mockImpl(function() { ctx = this; });
+    var mixin = Vixin({}, handler);
 
     mixin.handleValidation();
     expect(ctx).toBe(mixin);
+  });
+
+  // Clear all `dummy` handler and `unit.isObject` calls
+  afterEach(function() {
+    unit.isObject.mockClear();
+    handler.mockClear();
   });
 });

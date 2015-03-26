@@ -14,9 +14,9 @@ var isObject = require('./isObject');
  * @param {...Object} object sources (to copy from)
  * @return {Object}
  */
-module.exports = function(dest) {
-  // Let's bail when the destionation object is not an object
-  _throw(arg, 'Dest');
+module.exports = function (dest) {
+  // Let's bail when the destination object is not an object
+  _throw(dest, 'Destination object (dest)');
 
   for ( var i = 1; i < arguments.length; i++ ) {
     var arg = arguments[i];
@@ -44,9 +44,9 @@ module.exports = function(dest) {
  * @param {string} Label to be printed out to the console
  * @return {void}
  */
-function _throw(arg, label) {
+function _throw(arg, label, options) {
   if ( !isObject(arg) ) {
     throw new Error(label + ' you provided (' +
-      dest + ') is not a valid object.');
+      arg + ') is not a valid object.');
   }
 }

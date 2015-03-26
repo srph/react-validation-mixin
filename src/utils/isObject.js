@@ -3,15 +3,11 @@
  * which strictly accepts objects except arrays
  *
  * @param {mixed} arg Value to be checked
- * @param {Object} validation options
+ * @param {Object} Strict mode option
  * @return {boolean}
  */
-module.exports = function(arg, opt) {
-  // opt = {
-  //   undfn: true
-  //   strict : true
-  // }
-  return (opt && opt.undfn && ? arg !== undefined : true)
-    && (opt && !opt.strict ? true : !Array.isArray(arg))
+module.exports = function(arg, strict) {
+  return arg !== undefined
+    && (strict === true ? true : !Array.isArray(arg))
     && typeof arg == 'object';
 }

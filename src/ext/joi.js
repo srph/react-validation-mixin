@@ -17,11 +17,19 @@ var Vixin = require('../index');
  * @return {Object} Our mixin with Joi as validator
  */
 module.exports = function(rules) {
-  return Vixin(rules, function(data, stateNames) {
+  return Vixin(rules, function(data) {
     Joi.validate(data, rules, function(err, value) {
       // Joi states that when err is null,
       // then the object is valid.
       this.setState({ errors: err == null ? {} : err })
     }.bind(this));
+  }, {
+    isValid: function() {
+
+    },
+
+    getValidationMessages: function() {
+
+    }
   });
 }
