@@ -1,3 +1,5 @@
+var isObject = require('./isObject');
+
 /**
  * An `extend` util method which transfers source the
  * properties and its respectives values to the destination
