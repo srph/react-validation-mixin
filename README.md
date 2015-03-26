@@ -1,4 +1,4 @@
-# react-vixin [![Build Status](https://travis-ci.org/srph/react-vixin.svg)](https://travis-ci.org/srph/react-vixin)
+# react-vixin [![Build Status](https://travis-ci.org/srph/react-vixin.svg)](https://travis-ci.org/srph/react-vixin) [![Coverage Status](https://coveralls.io/repos/srph/react-vixin/badge.svg)](https://coveralls.io/r/srph/react-vixin)
 
 Bootstraps your form component with low-level validation feat.
 
