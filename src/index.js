@@ -1,8 +1,29 @@
-module.exports = function(rules, handler) {
-  // We'll be bail when the provided argument is undefined or a non-object
-  if ( rules == undefined || typeof rules !== 'object' || Array.isArray(rules) ) {
-    throw new Error('The rules provided must be an object.');
+var util = require('./utils/index');
+
+/**
+ *
+ */
+module.exports = function(rules, handler, stateNames) {
+  // We'll be bail when the provided arguments are invalid.
+  // This will be an if-else instead of an if-if because 
+  // if-if was some bizarre shit to read.
+  if ( !util.isObject(rules) ) {
+    throw new Error('The rules (' + rules + ') is not an object.');
+  } else if ( !util.isObject(stateNames, { undfn: false }) ) {
+    throw new Error('The stateNames (' +  stateNames + ') you provided is not an object.');
   }
+
+  // Default state names
+  var _defaults = {
+    data: 'data',
+    errors: 'errors'
+  };
+
+  // We'll override the defaults if the `stateNames`
+  // argument is provided, otherwise just set it to defaults
+  stateNames = stateNames == undefined
+    ? _defaults
+    : util.extend({}, _defaults, stateNames);
 
   return {
     getInitialState: function() {
@@ -11,10 +32,12 @@ module.exports = function(rules, handler) {
     },
 
     /**
+     * Runs the provided handler, with the mixin / component's context
      *
+     * @param {Object} data
      */
     handleValidation: function(data) {
-      handler.bind(this)(data);
+      handler.bind(this)(data, extend({}, _defaults, stateNames));
     },
 
     /**
