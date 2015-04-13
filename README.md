@@ -1,8 +1,12 @@
-# react-vixin [![Build Status](https://travis-ci.org/srph/react-vixin.svg)](https://travis-ci.org/srph/react-vixin) [![Coverage Status](https://coveralls.io/repos/srph/react-vixin/badge.svg)](https://coveralls.io/r/srph/react-vixin)
+# react-vixin [![Build Status](https://travis-ci.org/srph/react-vixin.svg)](https://travis-ci.org/srph/react-vixin)
 
 Bootstraps your form component with low-level validation feat.
 
-\* **Currently a work-in-progress.**
+## Importat Note
+
+**Project dropped**.
+
+This **was** a work-in-progress. However, I am stopping this project because starting `v0.13`, [**React** seems to be going away from mixins](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html); and I couldn't think a good API for this project that wouldn't be boilerplatey or annoying.
 
 ## Acknowledgement
 
